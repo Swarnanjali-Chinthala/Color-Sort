@@ -1,0 +1,308 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #bottles-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .bottle {
+    width: 50px;
+    height: 150px;
+    margin: 0 10px;
+    border: 2px solid #333;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    border-top: 0px;
+  }
+  /* styles.css */
+@keyframes floatAndBend {
+    0% { 
+      transform: translate(0, 0) rotate(0deg); 
+    }
+    50% { 
+      transform: translate(var(--move-x), var(--move-y)) rotate(var(--bend-angle)); 
+    }
+    100% { 
+      transform: translate(0, 0) rotate(0deg); 
+    }
+  }
+  
+  .pouring {
+    animation: floatAndBend 2s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    background-color: transparent;
+    width: 10px; /* Adjust as needed */
+    height: 0;
+    transition: height 0.5s ease; /* Smooth transition */
+    z-index: 1; /* Make sure it appears above other elements */
+  }
+  
+  @keyframes flowAnimation {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(var(--move-x), var(--move-y));
+    }
+  }
+  
+  .liquid-flow {
+    animation: flowAnimation 1s ease forwards;
+  }
+  
+  .liquid {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.5s ease;
+  }
+  
+  .liquid.red { background-color: red; }
+  .liquid.blue { background-color: blue; }
+  .liquid.green { background-color: green; }
+  /* Add more colors as needed */
+  
+  #controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  #reset-button {
+    padding: 10px 20px;
+  }
+  
+  #move-count, #timer {
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  #popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Pouring animation */
+  .pouring {
+    animation: pour 0.5s ease forwards;
+  }
+  
+ 
+/* styles.css */
+/* styles.css */
+@keyframes tilt {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(30deg); }
+  }
+  
+  .pouring {
+    animation: tilt 0.5s ease forwards;
+  }
+  
+  .pouring .liquid-flow {
+    animation: flow 0.5s ease forwards;
+  }
+  
+  @keyframes flow {
+    0% { height: 0; }
+    100% { height: 100%; }
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    background-color: inherit;
+    z-index: 1000;
+  }
+  /* styles.css */
+@keyframes floatAndTilt {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+    100% { transform: translateY(-10px) rotate(30deg); }
+  }
+  
+  @keyframes flow {
+    0% { height: 0; }
+    100% { height: 100%; }
+  }
+  
+  .pouring {
+    animation: floatAndTilt 1s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    background-color: inherit;
+    z-index: 1000;
+    animation: flow 0.5s ease forwards;
+  }
+  /* styles.css */
+@keyframes floatAndTilt {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(15deg);
+    }
+    100% {
+      transform: translateY(-20px) rotate(30deg);
+    }
+  }
+  
+  @keyframes pourFlow {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+  
+  @keyframes retract {
+    0% {
+      transform: translateY(-20px) rotate(30deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+  
+  .pouring {
+    animation: floatAndTilt 0.8s ease forwards;
+  }
+  
+  .retract {
+    animation: retract 0.8s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    background-color: inherit;
+    z-index: 1000;
+    animation: pourFlow 0.5s ease forwards;
+    border-radius: 5px;
+  }
+/* styles.css */
+@keyframes floatAndTiltLeft {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-15deg); }
+    100% { transform: translateY(-10px) rotate(-30deg); }
+  }
+  
+  @keyframes floatAndTiltRight {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+    100% { transform: translateY(-10px) rotate(30deg); }
+  }
+  
+  .pouring-left {
+    animation: floatAndTiltLeft 1s ease forwards;
+  }
+  
+  .pouring-right {
+    animation: floatAndTiltRight 1s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    z-index: 1000;
+    transition: height 0.5s ease, left 0.5s ease, top 0.5s ease;
+  }
+/* styles.css */
+@keyframes moveAndReturn {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotate-angle)); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+  
+  .pouring {
+    animation: moveAndReturn 2s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    z-index: 1000;
+    transition: height 0.5s ease, left 0.5s ease, top 0.5s ease;
+  }
+/* styles.css */
+@keyframes floatAbove {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(0, -50px) rotate(0deg); } /* Float above */
+    75% { transform: translate(var(--move-x), -50px) rotate(var(--rotate-angle)); } /* Move horizontally */
+    100% { transform: translate(0, 0) rotate(0deg); } /* Return to original position */
+  }
+  
+  .pouring {
+    animation: floatAbove 2s ease forwards;
+  }
+  
+  .liquid-flow {
+    position: absolute;
+    width: 10px; /* Width of the pouring liquid */
+    z-index: 1000;
+    transition: height 0.5s ease, left 0.5s ease, top 0.5s ease;
+  }
+/* styles.css */
+/* styles.css */
+/* styles.css */
+/* styles.css */
+@keyframes floatAndBend {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(0, -100%) rotate(0deg); } /* Float up by the height of the bottle */
+    75% { 
+      transform: translate(var(--move-x), -100%) rotate(var(--bend-angle)); /* Move horizontally and bend */
+    }
+    100% { 
+      transform: translate(0, 0) rotate(0deg); /* Return to original position */
+    }
+  }
+  
+  .pouring {
+    animation: floatAndBend 2s ease forwards;
+  }
+  
+  .liquid-flow {
+    display: none; /* Hide the pouring liquid element */
+  }
